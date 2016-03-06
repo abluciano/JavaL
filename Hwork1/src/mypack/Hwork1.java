@@ -13,8 +13,8 @@ public class Hwork1 {
 	
 		 
 		//**************** простые числа ***********
-		 for (int ch=3; ch<=simple; ch++){
-			for(int x=2;x<ch;x++){
+		 for (int ch=3; ch<=simple; ch++){ // начинаем с 3, т.к. 0 делится на все, а 1 и 2 простые
+			for(int x=2;x<ch;x++){         // начинаем с 2, т.к. на 0 делить нельзя, а на 1 делится все
 				res = ch%x;
 				if(res==0){break;}  
                 if (res!=0 & x==ch-1){

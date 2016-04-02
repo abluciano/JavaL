@@ -2,12 +2,13 @@ package pack;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
 public class Run {
 
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException {
+	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
 	
 //		Class infoMatrix = Class.forName("Hwork3.src.pack.Matrix");
 		
@@ -16,9 +17,11 @@ public class Run {
 			Object matr = infoMatrix.newInstance();
 			Matrix m1 = (Matrix)matr;
 			
-			Matrix m2 = new Matrix(3,3);
-			m2.fillMatrix();
-			m1.sum(m2);
+			Constructor m2 = infoMatrix.getDeclaredConstructor(int.class, int.class);
+			Object matr2 = m2.newInstance(3, 3);
+			Matrix m3 = (Matrix)matr2;
+			m3.fillMatrix();
+			m1.sum(m3);
 			
 			
 		} catch (InstantiationException e) {

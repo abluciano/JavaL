@@ -7,7 +7,7 @@ public class Matrix {
 
 	int m;
 	int n;
-	int ArrMatrix[][];
+	int[][] ArrMatrix;
 
 	public Matrix() {
 		m = 3;

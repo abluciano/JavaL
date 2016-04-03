@@ -13,6 +13,13 @@ public class Matrix {
 		m = 3;
 		n = 3;
 		ArrMatrix = new int[3][3];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				ArrMatrix[i][j] = 1;
+			}
+		}
+		
 	}
 
 	public Matrix(int m, int n) {

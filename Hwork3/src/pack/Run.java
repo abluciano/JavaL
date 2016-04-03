@@ -17,10 +17,12 @@ public class Run {
 		Matrix m1 = new Matrix();
 		Matrix m2 = new Matrix();
 		
-		Streams str1 = new Streams(m1, m2, 10);
-		Streams str2 = new Streams(m1, m2, 5);
+		Streams str1 = new Streams(m1, 10);
+		Streams str2 = new Streams(m1, 5);
+		Streams str3 = new Streams(m1, m2);
 		str1.start();
 		str2.start();
+		str3.start();
 		
 	}
 

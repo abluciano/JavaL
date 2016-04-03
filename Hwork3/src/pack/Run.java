@@ -3,7 +3,7 @@ package pack;
 public class Run {
 
 	public static void main(String[] args) {
-/*  Прошлое задание		
+/*  previos work		
 		Matrix M = new Matrix(2, 2);
 		Matrix D = new Matrix (2, 2);
 		D.fillMatrix();
@@ -16,8 +16,9 @@ public class Run {
 */		
 		Matrix m1 = new Matrix();
 		Matrix m2 = new Matrix();
-		Streams str1 = new Streams(m1, 10);
-		Streams str2 = new Streams(m2, 4);
+		
+		Streams str1 = new Streams(m1, m2, 10);
+		Streams str2 = new Streams(m1, m2, 5);
 		str1.start();
 		str2.start();
 		

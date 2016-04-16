@@ -11,52 +11,50 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Logger extends Thread{
+public class Logger extends Thread {
 
 	LogBody logB;
+	double wait;
+	private boolean isActive = true;
 
+	public Logger(LogBody logB, double wait) {
 
-
-	public Logger(LogBody logB) {
-	
 		this.logB = logB;
+		this.wait = wait;
 	}
-
 
 	@Override
 	public void run() {
 
-		File flog = new File("C:/Loggs/log.txt");
-		if (!flog.exists()) {
-			Path cpath = Paths.get("C:/Loggs/");
-			try {
-				Files.createDirectories(cpath);
-				flog.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-
 		try {
-			// BufferedWriter wrLog = new BufferedWriter(new FileWriter("C:/Loggs/log.txt"));
+			// BufferedWriter wrLog = new BufferedWriter(new
+			// FileWriter("C:/Loggs/log.txt"));
 			FileWriter wrLog = new FileWriter("C:\\Loggs\\log.txt", true);
 			LocalDateTime ld = LocalDateTime.now();
 			String cTime = ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-			
+
 			String logStr = cTime + "\t" + logB.type.name() + "\t" + logB.textLog + "\n";
-			
-	//		while(true){
-			wrLog.write(logStr);
-			wrLog.close();
-	//		}
-			
+
+			while (isActive = true) {
+				wrLog.write(logStr);
+				wrLog.close();
+				try {
+					sleep((long) wait);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	void stopWork() {
+		isActive = false;
 	}
 
 }
